@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('allposts');
+
+	return view('allposts');
 });
 
 Route::get('post', function () {
@@ -25,4 +26,15 @@ Route::get('label', function () {
 
 Route::get('login', function () {
     return view('login');
+});
+
+Route::get("test", function() {
+
+	$user = \App\Models\User::all();
+	// $post = \App\Models\Post::find(1);
+	// $label = \App\Models\Label::find(1);
+	// $comment = \App\Models\Comment::find(1);
+	$user->posts();
+
+	return $user;
 });
