@@ -340,6 +340,7 @@ display: inline-block;
 .post .post-title {
 margin-bottom: 16px;
 padding:0;
+line-height: 36px;
 }
 .post .post-title h2 {
 padding-top: 13px;
@@ -353,12 +354,13 @@ text-transform: uppercase;
 }
 .post-title a {
 background: #f6f6f6;
-padding: 4px 14px;
+padding: -1px 14px;
 color: #555;
 line-height: 22px;
 font-weight: 700;
 text-transform: uppercase;
 }
+
 /*  item labels */
 div.item-label {
 font-family: raleway;
