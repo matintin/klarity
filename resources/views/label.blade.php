@@ -18,7 +18,7 @@
                                     <span class="year"> 2014</span>
                                  </div>
                                  <a class="comment-number" href="">
-                                 <span class="comment-num">1</span>
+                                 <span class="comment-num">{{count($post->comments)}}</span>
                                  <span>Comments</span>
                                  </a>
                               </div>
@@ -31,7 +31,7 @@
                                     </div>
                                     <div class="item-thumb entry-image" style="position:relative;">
                                        <a href="">
-                                          <img src="" style="max-width:100%;" alt="Commodo omittam copiosae ">
+                                          <img src="{{asset('images/'.$post->photo)}}" style="max-width:100%;" >
                                        </a>
                                     </div>
                                     <div class="entry-feat-overlay">
@@ -39,22 +39,19 @@
                                  </div>
                                  <div class="clr"></div>
                                  <div class="post-meta">
-                                    <div class="small">Posted by <a href="" rel="author" title="Posts bySora Templates">Sora Templates</a> in 
+                                    <div class="small">Posted by <a href="" rel="author" title="Posts bySora Templates">{{$post->user->firstname}} {{$post->user->lastname}}</a> 
                                        <span class="post-categories">
-                                       <a href="Minimal" rel="tag">Minimal</a>,
-                                       <a href="Photography" rel="tag">Photography</a>,
-                                       <a href="Taste" rel="tag">Taste</a>,
-                                       <a href="Web%20design" rel="tag">Web design</a>
+                                       @foreach($post->labels as $label)
+                                          <a href="" rel="tag">{{$label->name}}</a>,
+                                       @endforeach
                                        </span>
                                     </div>
                                  </div>
                                  <div class="post-title">
-                                    <h2><a href="" title="Commodo omittam copiosae ">Commodo omittam copiosae </a></h2>
+                                    <h2><a href="">{{$post->title}} </a></h2>
                                  </div>
                                  <div class="item-content">
-                                    <p style="margin:0;">
-                                       Id mea dolorum lobortis, vix eu quas officiis. Cu quod ludus disputando vix. Vero nihil ullamcorper in nec. Sed everti voluptatum ad, tantas audiam tractatos at duo. Mel inani option sadipscing ea, senserit ocurreret disputationi has ne.Ad vel cetero iuvaret.
-                                    </p>
+                                    <p style="margin:0;">{{$post->content}}</p>
                                  </div>
                               </div>
                            </div>

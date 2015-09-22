@@ -7,10 +7,9 @@
                            <div class="post-meta">
                               <div class="small">Posted by <a href="" rel="author" title="Posts bySora Templates">{{$post->user->firstname}} {{$post->user->lastname}}</a>
                                  <span class="post-categories">
-                                 <a href="" rel="tag">Minimal</a>,
-                                 <a href="" rel="tag">Photography</a>,
-                                 <a href="" rel="tag">Taste</a>,
-                                 <a href="" rel="tag">Web design</a>
+                                 @foreach($post->labels as $label)
+                                  <a href="" rel="tag">{{$label->name}}</a>,
+                                 @endforeach
                                  </span>
                               </div>
                            </div>
@@ -43,10 +42,10 @@
                         </div>
 
                         <div class="comments" id="comments">
-                           <h4>2 comments:</h4>
+                           <h4>{{count($post->comments)}} comments:</h4>
                            <div class="comments-content">
                               <ol>
-                                 @foreach(\App\Models\Comment::find($post->comments[0]->id) as $comment)
+                                 @foreach($post->comments as $comment)
                                  <li class="comment">
                                     <div class="avatar-image-container"><img src="{{asset('images/avatar01.png')}}"></div>
                                     <div  class="comment-block">

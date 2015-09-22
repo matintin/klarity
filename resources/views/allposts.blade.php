@@ -39,7 +39,7 @@
                                     <div class="small">Posted by <a href="" rel="author" title="Posts bySora Templates">{{$post->user->firstname}} {{$post->user->lastname}}</a> in 
                                        <span class="post-categories">
                                        @foreach($post->labels as $label)
-                                       <a href="" rel="tag">{{$label->name}}</a>
+                                       <a href="" rel="tag">{{$label->name}}</a>,
                                        @endforeach
                                        </span>
                                     </div>

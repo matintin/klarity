@@ -40,6 +40,51 @@ Route::get('login', function () {
     return view('login');
 });
 
+Route::get('register', function() {
+	return view('register');
+});
+
+Route::post('users', function(\App\Http\Requests\CreateUserRequest $request) {
+
+	$user = \App\Models\User::create($request->all());
+
+	$user->password = bcrypt($user->password);
+
+	$user->save();
+
+	return redirect('users/'.$user->id);
+
+});
+
+Route::get('users/{id}', function($id) {
+
+	$user = \App\Models\User::find($id);
+
+	return view('profile',compact('user'));
+});
+
+Route::get('users/{id}/edit', function($id) {
+
+	$user = \App\Models\User::find($id);
+
+	return view('updateProfile',compact('user'));
+});
+
+Route::put('users/{id}', function(\App\Http\Requests\UpdateUserRequest $request, $id) {
+
+	$user = \App\Models\User::find($id);
+
+	$fileName = \Carbon\Carbon::now()->timestamp."_avatar.jpg";
+
+	$request->file('avatar')->move('images',$fileName);
+
+	$user->avatar = $fileName;
+
+	$user->save();
+
+	return redirect('users/'.$user->id);
+});
+
 Route::get("test", function() {
 
 	// $user = \App\Models\User::find(1);
