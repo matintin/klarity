@@ -10,10 +10,12 @@
                          <fieldset>
 
                             {!! Form::label('email','Email') !!}
-                            {!! Form::email('email',null,['id'=>'email','placeholder'=>'Email']) !!}
+                            {!! Form::email('email',null,['id'=>'email']) !!}
+                            {!! $errors->first('email', '<p class="error">:message</p>') !!}
                             
                             {!! Form::label('password','Password') !!}
-                            {!! Form::password('password',null,['id'=>'password','placehloder'=>'Password']) !!}
+                            {!! Form::password('password',null,['id'=>'password']) !!}
+                            {!! $errors->first('password', '<p class="error">:message</p>') !!}
                             
                             {!! Form::submit('Sign In',['class'=>'pure-button pure-button-primary']) !!}
 
