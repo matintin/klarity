@@ -13,15 +13,27 @@
 
 Route::get('/', function () {
 
+	
+	return view('hello');
+});
+
+Route::get('posts', function () {
+
 	return view('allposts');
 });
 
-Route::get('post', function () {
-    return view('post');
+Route::get('posts/{id}', function ($id) {
+
+	$post = \App\Models\Post::find($id);
+
+    return view('post',compact('post'));
 });
 
-Route::get('label', function () {
-    return view('label');
+Route::get('labels/{id}', function($id) {
+
+	$label = \App\Models\Label::find($id);
+
+	return view('label',compact('label'));
 });
 
 Route::get('login', function () {
@@ -30,11 +42,12 @@ Route::get('login', function () {
 
 Route::get("test", function() {
 
-	$user = \App\Models\User::all();
-	// $post = \App\Models\Post::find(1);
+	// $user = \App\Models\User::find(1);
+	$post = \App\Models\Post::find(1);
 	// $label = \App\Models\Label::find(1);
 	// $comment = \App\Models\Comment::find(1);
-	$user->posts();
+	//$user->posts()->get();
+	
 
-	return $user;
+	return $post->$comments->id;
 });

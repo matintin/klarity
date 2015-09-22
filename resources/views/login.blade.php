@@ -7,6 +7,7 @@
                      </div>
 
                      <form class="pure-form pure-form-stacked">
+                     
                          <fieldset>
                              <label for="email">Email</label>
                              <input id="email" type="email" placeholder="Email">

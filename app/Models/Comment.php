@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     //
-    public function users() {
+    public function user() {
     	$this->belongsTo("App\Models\User");
     }
 
-    public function posts() {
+    public function post() {
     	$this->belongsTo("App\Models\Post");
     }
 }
