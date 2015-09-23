@@ -45,7 +45,14 @@
                   <li><a href=""><i class="fa fa-pencil"></i> Blog</a></li>
                   <li><a href=""><i class="fa fa-briefcase"></i></span> Portfolio</a></li>
                   <li><a href=""><i class="fa fa-bolt"></i></span> Pages</a></li>
-                  <li><a href=""><i class="fa fa-user"></i></span> About</a></li>
+                  @if(Auth::check())
+                     <li><a href="{{url('users/'.Auth::user()->id)}}"><i class="fa fa-user"></i></span> Profile</a></li>
+                     <li><a href="{{url('logout')}}"><i class="fa fa-sign-out"></i></span> Logout</a></li>
+
+                  @else
+                     <li><a href="{{url('login')}}"><i class="fa fa-sign-in"></i></span> Login</a></li>
+                  @endif
+
                </ul>
             </div>
             <div class="clr"></div>

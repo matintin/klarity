@@ -28,8 +28,8 @@
 
                             {!! Form::hidden('avatar','avatar.png') !!}
 
-                            {!! Form::label('password_comfirmation','Confirm Password') !!}
-                            {!! Form::password('password_comfirmation') !!}
+                            {!! Form::label('password_confirmation','Confirm Password') !!}
+                            {!! Form::password('password_confirmation') !!}
 
                             
                             {!! Form::submit('Sign Up',['class'=>'pure-button pure-button-primary']) !!}

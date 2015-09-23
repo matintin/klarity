@@ -21,6 +21,7 @@
 
                          </fieldset>
                      {!! Form::close() !!}
+                     {!! Session::get("message") !!}
                    
 
                   </div>
