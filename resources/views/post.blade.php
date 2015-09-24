@@ -67,13 +67,7 @@
                               </ol>
                               <h4><a href="">Add comment</a></h4>
                               <div class="comment-replybox-thread">
-                                 <form class="pure-form pure-form-stacked">
-                                    <fieldset>
-                                      <label for="comment">Comment</label>
-                                      <textarea id="comment" class="pure-input-1" placeholder=""></textarea>
-                                      <button type="submit" class="pure-button pure-button-primary">Publish</button>
-                                    </fieldset>
-                                 </form>
+                                 @include('template.commentsCreate')
                               </div>
                                                
                            </div>

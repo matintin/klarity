@@ -14,4 +14,7 @@ class Comment extends Model
     public function post() {
     	$this->belongsTo("App\Models\Post");
     }
+    
+  	protected $fillable = ['content'];
+
 }

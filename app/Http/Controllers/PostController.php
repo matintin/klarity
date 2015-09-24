@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreatePostRequest;
 
 class PostController extends Controller
 {
@@ -29,6 +30,8 @@ class PostController extends Controller
     public function create()
     {
         //
+        return view('postCreate');
+        // return "hi";
     }
 
     /**
@@ -37,9 +40,14 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePostRequest $request)
     {
         //
+        $post = \App\Models\Post::create($request->all());
+
+        $post->save();
+
+        return redirect('posts/'.$post->id);
     }
 
     /**

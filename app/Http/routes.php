@@ -36,7 +36,20 @@ Route::Resource('users', 'UserController');
 //users
 
 
+//posts
+
 Route::Resource('posts', 'PostController');
+
+//posts
+
+Route::post('comments', function(\App\Http\Requests\CreateCommentRequest $request) {
+
+	$comment = \App\Models\Comment::create($request->all());
+
+	$comment->save();
+
+	return redirect('posts/'.$comment->post->id);
+});
 
 Route::get('labels/{id}', function($id) {
 

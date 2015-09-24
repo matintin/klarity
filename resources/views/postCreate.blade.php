@@ -1,0 +1,32 @@
+@extends('template.template')         
+@section('content')         
+                  <div class="content section form-page">   
+
+                     <div class="main-heading">
+                        <h2>Register</h2>
+                     </div>
+
+                     {!! Form::open(['url'=>'posts','class'=>'pure-form pure-form-stacked']) !!}
+                         <fieldset>
+
+
+                            {!! Form::label('title','Title') !!}
+                            {!! Form::text('title') !!}
+                            {!! $errors->first('title', '<p class="error">:message</p>') !!}
+
+                            {!! Form::label('photo','Photo') !!}
+                            {!! Form::file('photo') !!}
+                            {!! $errors->first('photo', '<p class="error">:message</p>') !!}
+
+                            {!! Form::label('content','content') !!}
+                            {!! Form::textarea('content') !!}
+                            {!! $errors->first('content', '<p class="error">:message</p>') !!}
+                                                       
+                            {!! Form::submit('Post',['class'=>'pure-button pure-button-primary']) !!}
+
+                         </fieldset>
+                     {!! Form::close() !!}
+                   
+
+                  </div>
+@stop

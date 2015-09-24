@@ -24,6 +24,7 @@
                             
                             {!! Form::label('avarta','Avarta') !!}
                             {!! Form::file('avarta') !!}
+                            {!! $errors->first('avarta', '<p class="error">:message</p>') !!}
                             
                             {!! Form::submit('Sign Up',['class'=>'pure-button pure-button-primary']) !!}
 
