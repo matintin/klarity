@@ -58,7 +58,11 @@
                                        <p class="comment-content">{{$comment->content}}</p>
                                        <div class="comment-actions">
                                           <a class="pure-button pure-button-primary">Reply</a>
-                                          <a class="pure-button pure-button-primary" href="">Delete</a>
+
+                                          {!! Form::open(['url'=>'comments/'.$comment->id,'method'=>'delete'])!!}
+                                          {!! Form::submit("Delete",['class'=>'pure-button pure-button-primary'])!!}
+                                          {!! Form::close() !!}
+                                          <!-- <a class="pure-button pure-button-primary" href="">Delete</a> -->
                                        </div>
                                     </div>
                                  </li>
@@ -67,7 +71,7 @@
                               </ol>
                               <h4><a href="">Add comment</a></h4>
                               <div class="comment-replybox-thread">
-                                 @include('template.commentsCreate')
+                                 @include('template.commentsCreate',['post'=>$post])
                               </div>
                                                
                            </div>

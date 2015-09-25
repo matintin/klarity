@@ -10,7 +10,12 @@ use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {
-    /**
+    public function __construct() {
+
+        $this->middleware('auth',['except' => ['create','store']]);
+        $this->middleware('profile',['except' => ['create','store']]);
+    }
+    /** 
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -28,7 +33,7 @@ class UserController extends Controller
     public function create()
     {
         //
-        return view('register');
+        return view('register')->with("bla",['./graphics/bands.gif','./graphics/landscape.gif','./graphics/people.gif']);
     }
 
     /**

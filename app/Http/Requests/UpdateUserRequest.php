@@ -26,7 +26,7 @@ class UpdateUserRequest extends Request
         return [
             //
             "email"=>"required|unique:users,email,".$this->route('users'),
-            "file"=>"required"
+            "avatar"=>"required"
         ];
     }
 }

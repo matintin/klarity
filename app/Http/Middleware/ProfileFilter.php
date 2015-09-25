@@ -23,13 +23,18 @@ class ProfileFilter
     {
         $profileID = $request->route('users');//mapping to route wildcard
 
-        if($request->ajax()) {
+        if($this->guard->user()->id != $profileID) {
 
-            return response('Unauthorized.', 401);
-        } else {
 
-            return redirect()->guest('login');
+            if($request->ajax()) {
+
+                return response('Unauthorized.', 401);
+            } else {
+
+                return redirect()->guest('login');
+            }
         }
+
 
         return $next($request);
     }

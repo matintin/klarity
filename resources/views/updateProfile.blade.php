@@ -3,10 +3,10 @@
                   <div class="content section form-page">   
 
                      <div class="main-heading">
-                        <h2>Register</h2>
+                        <h2>Update Profile</h2>
                      </div>
 
-                     {!! Form::model($user,['url'=>'users/'.$user->id,'method'=>'put', 'class'=>'pure-form pure-form-stacked']) !!}
+                     {!! Form::model($user,['url'=>'users/'.$user->id,'method'=>'put', 'class'=>'pure-form pure-form-stacked', 'files'=>true]) !!}
                          <fieldset>
 
 
@@ -22,11 +22,11 @@
                             {!! Form::email('email',null,['id'=>'email']) !!}
                             {!! $errors->first('email', '<p class="error">:message</p>') !!}
                             
-                            {!! Form::label('avarta','Avarta') !!}
-                            {!! Form::file('avarta') !!}
-                            {!! $errors->first('avarta', '<p class="error">:message</p>') !!}
+                            {!! Form::label('avatar','Avatar') !!}
+                            {!! Form::file('avatar') !!}
+                            {!! $errors->first('avatar', '<p class="error">:message</p>') !!}
                             
-                            {!! Form::submit('Sign Up',['class'=>'pure-button pure-button-primary']) !!}
+                            {!! Form::submit('Update',['class'=>'pure-button pure-button-primary']) !!}
 
                          </fieldset>
                      {!! Form::close() !!}

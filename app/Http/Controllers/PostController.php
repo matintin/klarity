@@ -43,7 +43,17 @@ class PostController extends Controller
     public function store(CreatePostRequest $request)
     {
         //
-        $post = \App\Models\Post::create($request->all());
+        $data = $request->all();
+
+        $data["user_id"] = \Auth::user()->id;
+        
+        $post = \App\Models\Post::create($data);
+
+        $fileName = \Carbon\Carbon::now()->timestamp."_postPhoto.jpg";
+
+        $request->file('photo')->move('images',$fileName);
+
+        $post->photo = $fileName;
 
         $post->save();
 

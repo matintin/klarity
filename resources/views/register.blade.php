@@ -31,11 +31,14 @@
                             {!! Form::label('password_confirmation','Confirm Password') !!}
                             {!! Form::password('password_confirmation') !!}
 
-                            
+                            {!! Form::email('data',null,['data-bla'=>json_encode($bla)]) !!}
                             {!! Form::submit('Sign Up',['class'=>'pure-button pure-button-primary']) !!}
 
                          </fieldset>
                      {!! Form::close() !!}
+
+
+           
                    
 
                   </div>

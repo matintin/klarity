@@ -42,14 +42,34 @@ Route::Resource('posts', 'PostController');
 
 //posts
 
+
+// comment
+
 Route::post('comments', function(\App\Http\Requests\CreateCommentRequest $request) {
 
-	$comment = \App\Models\Comment::create($request->all());
+	$data = $request->all();
+
+	$data["user_id"] = \Auth::user()->id;
+
+	$comment = \App\Models\Comment::create($data);
 
 	$comment->save();
 
-	return redirect('posts/'.$comment->post->id);
+	return redirect('posts/'.$data['post_id']);
 });
+
+Route::delete('comments/{id}',function($id) {
+
+	$comment = \App\Models\Comment::find($id);
+
+
+	$comment->delete();
+
+	return redirect('posts/'.$comment->post->id);
+
+});
+
+//comment
 
 Route::get('labels/{id}', function($id) {
 
