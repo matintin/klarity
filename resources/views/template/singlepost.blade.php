@@ -16,7 +16,11 @@
                               <div class="post-body">
                                  <div class="featimg left" style="position:relative;">
                                     <div class="item-label">
-                                       <span><a href="label/Minimal" rel="tag">{{$post->labels[0]->name}}</a></span>
+                                       <span><a href="label/Minimal" rel="tag">
+                                          @foreach($post->labels as $label)
+                                             {{$label->name}}
+                                          @endforeach
+                                       </a></span>
                                     </div>
                                     <div class="item-thumb entry-image" style="position:relative;">
                                        <a href="">

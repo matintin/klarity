@@ -21,7 +21,11 @@
                             {!! Form::label('content','content') !!}
                             {!! Form::textarea('content') !!}
                             {!! $errors->first('content', '<p class="error">:message</p>') !!}
-                                                       
+                            
+                            @foreach(\App\Models\Label::all() as $label)
+                                {!! Form::checkbox('labels[]',$label->id) !!}
+                                {!! Form::label('',$label->name) !!}
+                            @endforeach                          
                             {!! Form::submit('Post',['class'=>'pure-button pure-button-primary']) !!}
 
                          </fieldset>

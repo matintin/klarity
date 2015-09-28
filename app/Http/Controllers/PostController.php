@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 
 class PostController extends Controller
 {
@@ -49,6 +50,10 @@ class PostController extends Controller
         
         $post = \App\Models\Post::create($data);
 
+        foreach($data['labels'] as $labelID) {
+            $post->labels()->attach($labelID); 
+        }
+
         $fileName = \Carbon\Carbon::now()->timestamp."_postPhoto.jpg";
 
         $request->file('photo')->move('images',$fileName);
@@ -84,6 +89,9 @@ class PostController extends Controller
     public function edit($id)
     {
         //
+        $post = \App\Models\Post::find($id);
+
+        return view('updatePost',compact('post'));
     }
 
     /**
@@ -93,9 +101,30 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePostRequest $request, $id)
     {
         //
+
+        $data = $request->all();
+
+        $data["user_id"] = \Auth::user()->id;
+
+        $post = \App\Models\Post::find($id);
+
+        foreach($data['labels'] as $labelID) {
+            $post->labels()->attach($labelID); 
+        }
+
+        $fileName = \Carbon\Carbon::now()->timestamp."_postPhoto.jpg";
+
+        $request->file('photo')->move('images',$fileName);
+
+        $post->photo = $fileName;
+
+        $post->save();
+
+        return redirect('posts/'.$post->id);
+
     }
 
     /**
